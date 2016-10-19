@@ -15,5 +15,10 @@
     "less-middleware": "1.0.x",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0"
   }
 }
