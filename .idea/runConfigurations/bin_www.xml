@@ -3,7 +3,7 @@
     <envs>
       <env name="DEBUG" value="PersonalNotepad:*" />
     </envs>
-    <browser start="true" url="http://localhost:3000/" />
+    <browser url="http://localhost:3000/" />
     <method />
   </configuration>
 </component>

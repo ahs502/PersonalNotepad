@@ -1,8 +1,9 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var clean = require('gulp-clean');
-
-var fs = require("fs");
+var uglify = require('gulp-uglify');
+var rename = require("gulp-rename");
+var obfuscate = require('gulp-obfuscate');
 
 
 gulp.task('clean-js', function () {
@@ -14,9 +15,16 @@ gulp.task('concat-js', ['clean-js'], function (/*done*/) {
     return gulp.src([
         './app/src/main.js',
         './app/src/services/**/*.js',
-        './app/src/controllers/**/*.js'
+        './app/src/controllers/**/*.js',
+        './app/src/directives/**/*.js',
     ])
         .pipe(concat('app.js'))
+        .pipe(gulp.dest('./public/javascripts'))
+        .pipe(uglify())
+        .pipe(rename('app.min.js'))
+        .pipe(gulp.dest('./public/javascripts'))
+        .pipe(obfuscate({replaceMethod: obfuscate.ZALGO}))
+        .pipe(rename('app.namardi.min.js'))
         .pipe(gulp.dest('./public/javascripts'));
     //.on('end',function(){
     //    done();

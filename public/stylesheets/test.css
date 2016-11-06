@@ -1,0 +1,25 @@
+#drop-zone {
+    height: 200px;
+    border: 1px solid mediumvioletred
+}
+
+#drop-zone:hover {
+    background-color: rgba(255, 182, 193, 0.22);
+}
+
+#drop-zone.drag-on {
+    background-color: rgba(255, 152, 104, 0.85);
+}
+
+#input-file {
+    display: none;
+}
+
+table tbody tr td {
+    border: 1px solid blue;
+}
+
+.upload-image-preview{
+    max-width: 100px;
+    max-height: 70px;
+}
