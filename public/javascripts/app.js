@@ -28,35 +28,6 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 }]);
 
-
-//app.factory('IdGen', function () {
-//
-//    var id = 0;
-//
-//    function generateId() {
-//        return id++;
-//    }
-//
-//    return {
-//        generateId: generateId
-//    };
-//
-//});
-//
-//app.factory('IdGen', function () {
-//
-//    var id = 0;
-//
-//    function generateId() {
-//        return id++;
-//    }
-//
-//    return {
-//        generateId: generateId
-//    };
-//
-//});
-
 app.service('noteClientService', ['$window', 'userFactory', function ($window, userFactory) {
 
     this.load = load;
