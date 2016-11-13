@@ -40,9 +40,14 @@ app.controller('homeController', ['$scope', '$location', 'userFactory', '$window
     $scope.upload = function(){
         $location.url('/upload');
     }
+    $scope.collapse = function(){
+        $scope.isCollapsed = !$scope.isCollapsed;
+        $scope.state = $scope.isCollapsed ? '+' : '-';
+    }
 
     $scope.isNavCollapsed = true;
     $scope.isCollapsed = false;
     $scope.isCollapsedHorizontal = false;
+    $scope.state = $scope.isCollapsed ? '+' : '-';
 
 }]);

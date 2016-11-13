@@ -37,7 +37,7 @@
     <div ng-if="currentUser">
         <div ng-hide="notes">Loading notes...</div>
         <div ng-if="notes">
-            <button class="note" type="button" class="btn btn-default" ng-click="console.log('sdsd'); isCollapsed = !isCollapsed">+</button>
+            <button class="note" type="button" class="btn btn-default" ng-click="collapse()">{{state}}</button>
             <div  ng-repeat="note in notes track by $index">
                 <hr>
                 <div ng-click="readNote($index)" uib-collapse="isCollapsed">
