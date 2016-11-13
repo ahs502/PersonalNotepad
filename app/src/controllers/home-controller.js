@@ -1,4 +1,4 @@
-app.controller('homeController', ['$scope', '$location', 'userFactory', '$window', 'noteService', function ($scope, $location, userFactory, $window, noteService) {
+app.controller('homeController', ['$scope', '$location', 'userFactory', '$window', 'noteService','toastr', function ($scope, $location, userFactory, $window, noteService, toastr) {
 
     $scope.currentUser = userFactory.getCurrentUser();
     noteService.load().then(function (notes) {
@@ -15,6 +15,7 @@ app.controller('homeController', ['$scope', '$location', 'userFactory', '$window
     };
     $scope.removeNote = function (index) {
         $scope.notes.splice(index, 1);
+        toastr["success"]("note removed successfully");
         noteService.store($scope.notes);
     };
     $scope.editNote = function (index) {
@@ -36,5 +37,12 @@ app.controller('homeController', ['$scope', '$location', 'userFactory', '$window
     $scope.storeNotes = function () {
         noteService.store($scope.notes);
     };
+    $scope.upload = function(){
+        $location.url('/upload');
+    }
+
+    $scope.isNavCollapsed = true;
+    $scope.isCollapsed = false;
+    $scope.isCollapsedHorizontal = false;
 
 }]);

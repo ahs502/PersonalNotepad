@@ -13,7 +13,7 @@ router.post('/', function (req, res, next) {
         err && console.log('Upload error : ', err);
     });
     form.on('fileBegin', function (name, file) {
-        file.path = __dirname + '/../uploadedfiles/' + file.name; //TODO: specify storage path
+        file.path = __dirname + '/../uploadedfiles/' + file.name ; //TODO: specify storage path
     });
     form.on('file', function (name, file) {
         console.log('Uploading : ', file.name);

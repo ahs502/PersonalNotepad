@@ -1,8 +1,21 @@
-app.controller('TestController', ['$scope', '$window', '$timeout', function ($scope, $window, $timeout) {
-
+app.controller('uploadController', ['$scope', '$window', '$timeout', '$location', 'userFactory', function ($scope, $window, $timeout, $location, userFactory) {
+    $scope.backToHome = function () {
+        $location.url('/');
+    };
     $scope.selectFilesDialog = selectFilesDialog;
     $scope.cancelUpload = cancelUpload;
     $scope.removeFile = removeFile;
+    $scope.currentUser = userFactory.getCurrentUser();
+
+    $scope.init = init;
+
+    init();
+
+    //to retrive uploaded file of current user
+    function init() {
+
+    }
+
 
     $scope.selectedFiles = [];
 
@@ -94,17 +107,21 @@ app.controller('TestController', ['$scope', '$window', '$timeout', function ($sc
 
         var xhr = new XMLHttpRequest();
         file.xhr = xhr;
-        xhr.open('post', '/upload', true);
+
+        xhr.open('post', '/upload',true);
+        var params = JSON.stringify($scope.currentUser.userName);
         xhr.upload.onprogress = function (e) {
             if (e.lengthComputable) {
                 file.progress = Math.floor((e.loaded / e.total) * 100);
                 $scope.$$phase || $scope.$apply();
             }
         };
+
         xhr.onerror = function (e) {
             file.status = 'Error';
             $scope.$$phase || $scope.$apply();
         };
+
         xhr.onabort = function (e) {
             file.status = 'Aborted';
             $scope.$$phase || $scope.$apply();
@@ -118,6 +135,7 @@ app.controller('TestController', ['$scope', '$window', '$timeout', function ($sc
         file.progress = '0%';
         $scope.$$phase || $scope.$apply();
 
+
         xhr.send(formData);
     }
 
@@ -129,6 +147,7 @@ app.controller('TestController', ['$scope', '$window', '$timeout', function ($sc
     function removeFile(file) {
         //TODO: lock this file interface
         cancelUpload(file);
+
         $timeout(function () {
             $scope.selectedFiles.splice($scope.selectedFiles.indexOf(file), 1);
         });

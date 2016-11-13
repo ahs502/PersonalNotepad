@@ -13,12 +13,8 @@ a {
 }
 
 .note {
-    border: #f5ecc8 solid 1px;
-    padding: 5px;
-    margin: 60px 10px;
-    background-color: lightgoldenrodyellow;
-    height: 30px;
-    cursor: pointer;
+    position: relative;
+    top: 15px;
 }
 
 .note div {
@@ -37,6 +33,8 @@ a {
     float: right;
     margin-left: 5px;
     cursor: pointer;
+    bottom: 20px;
+    position: relative;
 }
 
 .menu-icon {
@@ -72,4 +70,12 @@ textarea {
 
 .err-msg {
     color: red;
+}
+
+.horizontal-collapse {
+    height: 70px;
+}
+
+.navbar-collapse.in {
+    overflow-y: hidden;
 }

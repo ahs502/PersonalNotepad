@@ -1,4 +1,4 @@
-var app = angular.module("PersonalNotepad", ['ngRoute']);
+var app = angular.module("PersonalNotepad", ['ngAnimate', 'ngSanitize', 'ui.bootstrap','ngRoute','toastr']);
 
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
@@ -6,7 +6,7 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: "home.html",
             controller: "homeController"
         })
-        .when("/edit/:id", {
+        .when("/edit/:id/", {
             templateUrl: "edit.html",
             controller: "editController"
         })
@@ -21,6 +21,10 @@ app.config(['$routeProvider', function ($routeProvider) {
         .when("/register/", {
             templateUrl: 'register.html',
             controller: 'registerController'
+        })
+        .when("/upload/", {
+            templateUrl: 'upload.html',
+            controller: 'uploadController'
         })
         .otherwise({
             redirectTo: "/"
